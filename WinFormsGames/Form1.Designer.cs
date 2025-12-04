@@ -41,7 +41,7 @@
             // dgDatos
             // 
             dgDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgDatos.Location = new Point(384, 28);
+            dgDatos.Location = new Point(262, 24);
             dgDatos.Name = "dgDatos";
             dgDatos.RowHeadersWidth = 82;
             dgDatos.Size = new Size(1095, 420);
@@ -51,7 +51,7 @@
             // 
             // btnMostrar
             // 
-            btnMostrar.Location = new Point(384, 627);
+            btnMostrar.Location = new Point(262, 476);
             btnMostrar.Name = "btnMostrar";
             btnMostrar.Size = new Size(214, 67);
             btnMostrar.TabIndex = 1;
@@ -62,7 +62,7 @@
             // lbID
             // 
             lbID.AutoSize = true;
-            lbID.Location = new Point(44, 63);
+            lbID.Location = new Point(44, 70);
             lbID.Name = "lbID";
             lbID.Size = new Size(161, 32);
             lbID.TabIndex = 2;
@@ -70,16 +70,16 @@
             // 
             // txbID
             // 
-            txbID.Location = new Point(28, 130);
+            txbID.Location = new Point(28, 137);
             txbID.Name = "txbID";
             txbID.Size = new Size(200, 39);
             txbID.TabIndex = 3;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(28, 215);
+            btnBuscar.Location = new Point(28, 222);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(214, 65);
+            btnBuscar.Size = new Size(214, 60);
             btnBuscar.TabIndex = 4;
             btnBuscar.Text = "Buscar por ID";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -87,9 +87,9 @@
             // 
             // picGame
             // 
-            picGame.Location = new Point(862, 489);
+            picGame.Location = new Point(809, 476);
             picGame.Name = "picGame";
-            picGame.Size = new Size(617, 431);
+            picGame.Size = new Size(548, 238);
             picGame.TabIndex = 5;
             picGame.TabStop = false;
             picGame.Click += picGame_Click;
@@ -98,7 +98,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1517, 951);
+            ClientSize = new Size(1408, 757);
             Controls.Add(picGame);
             Controls.Add(btnBuscar);
             Controls.Add(txbID);
