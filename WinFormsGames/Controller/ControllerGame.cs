@@ -64,5 +64,22 @@ namespace WinFormsGames.Controller
 
             return lista!;
         }
+
+        public async Task<GameModels?> GetGameByIdAsync(string token, int id)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _httpClient.GetAsync($"api/Games/{id}");
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception("Error al obtener el juego: " + response.StatusCode);
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            var game = JsonConvert.DeserializeObject<GameModels>(json);
+
+            return game;
+        }
     }
 }
