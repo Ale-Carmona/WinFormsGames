@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.Json;
 using System.Windows.Forms;
 using WinFormsGames.Controller;
 using WinFormsGames.Models;
@@ -7,6 +8,18 @@ namespace WinFormsGames
 {
     public partial class Form1 : Form
     {
+        private readonly ControllerGame _controller = new ControllerGame();
+        private string _token;
+
+        private static string _jwtToken = null;
+
+        private static readonly HttpClient _httpClient = new HttpClient();
+
+        // URLs Base de TU PROPIA API de .NET 8
+        private const string ApiBaseUrl = "https://localhost:7277/"; // La URL base
+        private const string CharacterUrl = ApiBaseUrl + "api/Games/id/";
+        private const string AllCharactersUrl = ApiBaseUrl + "api/Games";
+        private const string LoginUrl = ApiBaseUrl + "api/Auth/login"; // Endpoint de Login
         public Form1()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
@@ -20,8 +33,11 @@ namespace WinFormsGames
             try
             {
                 ControllerGame controller = new ControllerGame();
-                string token = await controller.GetTokenAsync("admin", "admin123");
-                var listaJuegos = await controller.GetGamesAsync(token);
+                string user = txbUserName.Text.Trim();
+                string pass = txbPassword.Text.Trim();
+
+                _token = await _controller.GetTokenAsync(user, pass);
+                var listaJuegos = await controller.GetGamesAsync(_token);
 
                 dgDatos.DataSource = listaJuegos;
             }
@@ -119,5 +135,24 @@ namespace WinFormsGames
         {
 
         }
+
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string user = txbUserName.Text.Trim();
+                string pass = txbPassword.Text.Trim();
+
+                _token = await _controller.GetTokenAsync(user, pass);
+
+                MessageBox.Show("Login correcto!");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de login: " + ex.Message);
+            }
+        }
+    
     }
 }
